@@ -77,6 +77,9 @@
 
 DAS_ARRAY_T *buffer = 0;
 
+/* External variables */
+extern int exiting;
+
 /* functions */
 
 #ifndef __STDC__
@@ -403,6 +406,8 @@ read_line (char *prompt)
     }
   while (c != EOF && c != '\n');
 #endif /* SHIFT_JIS */
+  if (c == EOF)
+    exiting = 1;
   return DScstr (ds);
 }
 
